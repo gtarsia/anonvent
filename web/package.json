@@ -1,0 +1,21 @@
+{
+  "name": "anonvent-web",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "ky": "^0.25.1",
+    "lodash-es": "^4.17.15",
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "@vue/compiler-sfc": "^3.0.4",
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vite": "^1.0.0-rc.13"
+  }
+}

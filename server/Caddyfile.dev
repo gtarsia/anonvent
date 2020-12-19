@@ -1,0 +1,7 @@
+http://localhost:3030
+handle /api/* {
+	reverse_proxy 127.0.0.1:3015
+}
+handle {
+	reverse_proxy 127.0.0.1:3000
+}
