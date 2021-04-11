@@ -1,12 +1,11 @@
 import client from '../redis-client'
-import { get, multi, lrange, rpush } from '../redis-promise'
-import { hex16 } from '../random'
+import { get, lrange, rpush } from '../redis-promise'
 
 export function userConvoKey(userId) {
   return `users:${userId}:convo`
 }
 
-function convoUsersKey(convoId) {
+export function convoUsersKey(convoId) {
   return `convos:${convoId}:users`
 }
 
@@ -16,16 +15,6 @@ function convoMessagesKey(convoId) {
 
 export function getUserConvoId({ userId }) {
   return get(client, userConvoKey(userId))
-}
-
-export function startConvo(requester, partner) {
-  const convoId = hex16()
-  const convo = { [requester.role]: requester.userId, [partner.role]: partner.userId }
-  const chain = client.multi()
-    .set(userConvoKey(requester.userId), convoId)
-    .set(userConvoKey(partner.userId), convoId)
-    .set(convoUsersKey(convoId), JSON.stringify(convo))
-  return multi(chain)
 }
 
 export async function addUserMessage({ userId, text }) {

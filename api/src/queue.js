@@ -1,6 +1,6 @@
 import client from './redis-client'
 import { zadd, zpopmin } from './redis-promise'
-import { startConvo } from './convos/convo'
+import startConvo from './convos/start-convo'
 
 function queueKey(role) {
   return `queues:${role}`
