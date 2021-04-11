@@ -1,9 +1,10 @@
-import client from '../redis-client'
+import getRedisClient from '../get-redis-client'
 import { multi } from '../redis-promise'
 import { hex16 } from '../random'
 import { userConvoKey, convoUsersKey } from './convo'
 
 export default function startConvo(requester, partner) {
+  const client = getRedisClient()
   const convoId = hex16()
   const convo = { [requester.role]: requester.userId, [partner.role]: partner.userId }
   const chain = client.multi()

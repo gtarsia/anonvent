@@ -1,7 +1,7 @@
 import { upperFirst, camelCase } from 'lodash'
 import randomWords from 'random-words'
 import { get, set } from '../redis-promise'
-import client from '../redis-client'
+import getRedisClient from '../get-redis-client'
 
 const wordsPerString = 2
 const exactly = 1
@@ -18,6 +18,7 @@ function getUserNicknameKey(userId) {
 }
 
 export async function getUserNickname({ userId }) {
+  const client = getRedisClient()
   const key = getUserNicknameKey(userId)
   const res = await get(client, key)
   if (res) {
