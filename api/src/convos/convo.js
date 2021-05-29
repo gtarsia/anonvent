@@ -1,5 +1,6 @@
 import getRedisClient from '../get-redis-client'
 import { get, lrange, rpush } from '../redis-promise'
+// import { getWebsocketServer } from '../websocket-server'
 
 export function userConvoKey(userId) {
   return `users:${userId}:convo`

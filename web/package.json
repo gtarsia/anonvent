@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "dummee": "^1.2.0",
     "ky": "^0.25.1",
     "lodash-es": "^4.17.15",
     "vue": "^3.0.4"

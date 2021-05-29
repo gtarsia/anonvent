@@ -1,3 +1,4 @@
+import { stubIfTest } from 'dummee'
 
 function promisify(fn) {
   return new Promise((resolve, reject) => {
@@ -10,9 +11,11 @@ function promisify(fn) {
   })
 }
 
-export function multi(chain) {
+function _execMulti(chain) {
   return promisify(cb => chain.exec(cb))
 }
+export const execMulti = stubIfTest(_execMulti)
+
 export function get(client, ...args) {
   return promisify(cb => client.get(...args, cb))
 }

@@ -2,7 +2,7 @@ import http from 'http'
 import Koa from 'koa'
 import json from 'koa-json'
 import { session } from './session'
-import { useWebsockets } from './websocket'
+import { initWebsocketServer } from './websocket-server'
 import { router } from './router'
 
 const app = new Koa()
@@ -22,4 +22,4 @@ function listeningReporter() {
 
 const server = http.createServer(app.callback())
 server.listen(HTTP_PORT, HOST, listeningReporter)
-useWebsockets({ server })
+initWebsocketServer({ server })

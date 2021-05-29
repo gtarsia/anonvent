@@ -1,6 +1,5 @@
 import { getConvoMessages, getUserConvoId } from '../convos/convo'
 
-
 export async function getUserMessages({ userId }) {
   const convoId = await getUserConvoId({ userId })
   if (!convoId) {

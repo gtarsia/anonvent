@@ -4,6 +4,7 @@ import { setRole, roleRef } from './role'
 import getStatus from '/@/api/self/get-status'
 import leaveReq from '/@/api/chat/leave'
 import queueReq from '/@/api/chat/queue'
+import connectWs from '/@/websocket/connect-ws'
 
 export const selfNicknameRef = ref('')
 export const partnerNicknameRef = ref('')
@@ -16,14 +17,8 @@ export async function queue() {
 }
 
 export async function hydrate() {
-  // const socket = new WebSocket('ws://127.0.0.1:3000')
-  // socket.onmessage = function(event) {
-  //   console.log(event)
-  // }
-  // socket.onopen = function (event) {
-  //   socket.send("Here's some text that the server is urgently awaiting!")
-  // }
   const { isMatched, partnerNickname, role, nickname } = await getStatus()
+  connectWs()
   selfNicknameRef.value = nickname
   setRole(role)
   if (isMatched) {

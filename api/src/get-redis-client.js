@@ -1,12 +1,15 @@
 import redis from 'redis'
 import { stubIfTest } from 'dummee'
 
-const client = redis.createClient()
-client.on('error', (error) => {
-  console.error(error)
-})
+let client = null
 
 function getClient() {
+  if (client === null) {
+    client = redis.createClient()
+    client.on('error', (error) => {
+      console.error(error)
+    })
+  }
   return client
 }
 
