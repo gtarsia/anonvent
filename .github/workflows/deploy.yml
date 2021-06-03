@@ -10,21 +10,19 @@ on:
     branches: [ master ]
 
 jobs:
-  run-web:
+  checkout:
     runs-on: self-hosted
-    defaults:
-      run:
-        working-directory: ./web
     steps:
     - uses: actions/checkout@v2
-    - run: yarn install
-    - run: npm run build --if-present
-  run-api:
-    runs-on: self-hosted
-    defaults:
-      run:
-        working-directory: ./api
-    steps:
-    - uses: actions/checkout@v2
-    - run: yarn install
-    - run: pm2 restart api
+    - name: Install deps for api
+      run: yarn install
+      working-directory: ./api
+    - name: Restart api
+      run: pm2 restart api
+      working-directory: ./api
+    - name: Install deps for web
+      run: yarn install
+      working-directory: ./web
+    - name: Build web
+      run: npm run build --if-present
+      working-directory: ./web
