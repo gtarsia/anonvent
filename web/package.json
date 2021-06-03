@@ -9,6 +9,7 @@
     "dummee": "^1.2.0",
     "ky": "^0.25.1",
     "lodash-es": "^4.17.15",
+    "mitt": "^2.1.0",
     "vue": "^3.0.4"
   },
   "devDependencies": {

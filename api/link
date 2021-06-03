@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 rm -rf node_modules/_
-ln -sf $(dirname `which $0`)/src node_modules/_
+ln -sf $SCRIPT_DIR/src node_modules/_

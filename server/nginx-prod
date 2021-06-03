@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+nginx -c nginx-prod.conf -p $(dirname $0)
