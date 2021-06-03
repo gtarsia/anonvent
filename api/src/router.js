@@ -1,5 +1,6 @@
 import getStatus from './controllers/self/get-status'
-import getQueue from './controllers/queue/get-queue'
+import joinQueue from './controllers/queue/join-queue'
+import leaveQueue from './controllers/queue/leave-queue'
 import getMessages from './controllers/chat/get-messages'
 import sendMessage from './controllers/chat/send-message'
 import leaveConvo from './controllers/chat/leave-convo'
@@ -13,8 +14,11 @@ export function router() {
       if (ctx.path === '/api/self/status') {
         await getStatus({ ctx })
       }
-      if (ctx.path === '/api/queue') {
-        await getQueue({ ctx })
+      if (ctx.path === '/api/queue/join' && ctx.method === 'POST') {
+        await joinQueue({ ctx })
+      }
+      if (ctx.path === '/api/queue/leave' && ctx.method === 'POST') {
+        await leaveQueue({ ctx })
       }
       if (ctx.path === '/api/chat/messages' && ctx.method === 'GET') {
         await getMessages({ ctx })

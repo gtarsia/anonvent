@@ -33,3 +33,15 @@ export function sendMessage(text) {
   }
   messageEvents.emit('push')
 }
+
+export function receiveMessage(message) {
+  const { text } = message
+  const lastGroup = last(messageGroupsRef.value)
+  if (lastGroup && !lastGroup.mine) {
+    lastGroup.messagesRef.push({ text })
+  } else {
+    const group = { mine: false, messagesRef: ref([{ text }]) }
+    messageGroupsRef.value.push(group)
+  }
+  messageEvents.emit('push')
+}

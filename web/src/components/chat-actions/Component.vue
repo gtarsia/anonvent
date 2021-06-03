@@ -11,7 +11,7 @@
             id="join-queue-button"
             :class="isFindingRef ? 'bg-yellow-500' : 'bg-blue-500'"
             v-if="!isMatchedRef"
-            @click="queue">
+            @click="isFindingRef ? leaveQueue() : joinQueue()">
       <svg class="animate-spin -ml-1 mr-2 h-5 w-4 text-white"
            xmlns="http://www.w3.org/2000/svg"
            fill="none"

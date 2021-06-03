@@ -23,4 +23,13 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['_', './src'],
+        ],
+      }
+    }
+  }
 }

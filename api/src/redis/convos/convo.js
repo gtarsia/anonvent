@@ -30,3 +30,12 @@ export async function getConvoUsers({ convoId }) {
   const res = await get(client, key)
   return JSON.parse(res)
 }
+
+export async function getConvoPartner({ userId }) {
+  const convoId = await getUserConvoId({ userId })
+  if (!convoId) {
+    return null
+  }
+  const users = await getConvoUsers({ convoId })
+  return users.venter === userId ? users.listener : users.venter
+}

@@ -43,3 +43,9 @@ export function zcard(client, ...args) {
 export function zpopmin(client, ...args) {
   return promisify(cb => client.zpopmin(...args, cb))
 }
+export function zscore(client, ...args) {
+  return promisify(cb => client.zscore(...args, cb))
+}
+export function zrem(client, ...args) {
+  return promisify(cb => client.zrem(...args, cb))
+}

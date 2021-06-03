@@ -1,8 +1,8 @@
-import { isMatchedRef, isFindingRef, queue, leave } from '/@/store/store'
+import { isMatchedRef, isFindingRef, joinQueue, leaveQueue, leave } from '/@/store/store'
 import { wantToChangeRoleRef, showRolePickerRef, roleRef } from '/@/store/role'
 
 function setup() {
-  return { isMatchedRef, isFindingRef, queue, leave, wantToChangeRoleRef, showRolePickerRef, roleRef }
+  return { isMatchedRef, isFindingRef, joinQueue, leave, leaveQueue, wantToChangeRoleRef, showRolePickerRef, roleRef }
 }
 
 export default { setup }

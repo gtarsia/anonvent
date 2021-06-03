@@ -1,9 +1,10 @@
 import { stubIfTest } from 'dummee'
-import leaveConvoRedis from '_/redis/convos/leave-convo'
+import leaveConvoModel from '_/models/convos/leave-convo'
 
-function leaveConvo({ ctx }) {
+async function leaveConvo({ ctx }) {
   const { userId } = ctx
-  return leaveConvoRedis({ userId })
+  await leaveConvoModel({ userId })
+  ctx.body = true
 }
 
 export default stubIfTest(leaveConvo)
