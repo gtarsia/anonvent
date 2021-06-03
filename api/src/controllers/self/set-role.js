@@ -1,6 +1,6 @@
 import { stubIfTest } from 'dummee'
-import readBody from '../../read-body'
-import { setUserRole } from '../../users/role'
+import readBody from '_/read-body'
+import { setUserRole } from '_/redis/users/role'
 
 async function setRole({ ctx }) {
   const { userId } = ctx

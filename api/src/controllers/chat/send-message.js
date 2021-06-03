@@ -1,6 +1,6 @@
 import { stubIfTest } from 'dummee'
-import { addUserMessage } from '../../convos/convo'
-import readBody from '../../read-body'
+import { addUserMessage } from '_/redis/convos/convo'
+import readBody from '_/read-body'
 
 async function sendMessage({ ctx }) {
   const { userId } = ctx

@@ -13,16 +13,19 @@
     "esw": "esw src",
     "fix": "eslint --fix src '**/*.js'",
     "test": "nyc ava",
-    "test:watch": "ava --watch"
+    "test:watch": "ava --watch",
+    "test:integration": "ava integration.test.js --timeout=10m",
+    "postinstall": "bash ./link"
   },
   "devDependencies": {
-    "ava": "^3.9.0",
+    "ava": "^3.15.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-watch-better": "^0.1.2",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "puppeteer": "^9.1.1"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
@@ -36,6 +39,9 @@
     "random-words": "^1.1.1",
     "redis": "^3.0.2",
     "ws": "^7.4.1"
+  },
+  "optionalDependencies": {
+    "_": "sindresorhus/file-url"
   },
   "ava": {
     "files": [

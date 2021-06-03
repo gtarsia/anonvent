@@ -1,5 +1,5 @@
-import { get, set } from '../redis-promise'
-import getRedisClient from '../get-redis-client'
+import { get, set } from '_/redis-promise'
+import getRedisClient from '_/get-redis-client'
 
 function getUserRoleKey(userId) {
   return `users:${userId}:role`

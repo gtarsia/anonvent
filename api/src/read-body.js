@@ -10,7 +10,7 @@ export default function readBody({ ctx }) {
       }
     })
     req.on('end', () => {
-      resolve(JSON.parse(body))
+      resolve(body ? JSON.parse(body) : {})
     })
   })
 }

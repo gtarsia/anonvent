@@ -3,7 +3,7 @@ import { stubIfTest } from 'dummee'
 
 let client = null
 
-function getClient() {
+function getRedisClient() {
   if (client === null) {
     client = redis.createClient()
     client.on('error', (error) => {
@@ -13,4 +13,4 @@ function getClient() {
   return client
 }
 
-export default stubIfTest(getClient)
+export default stubIfTest(getRedisClient)

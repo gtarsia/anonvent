@@ -1,7 +1,7 @@
-import getRedisClient from '../get-redis-client'
-import { execMulti } from '../redis-promise'
-import { hex16 } from '../random'
-import { userConvoKey, convoUsersKey } from './convo'
+import getRedisClient from '_/get-redis-client'
+import { execMulti } from '_/redis-promise'
+import { hex16 } from '_/random'
+import { userConvoKey, convoUsersKey } from './keys'
 
 export default function startConvo(requester, partner) {
   const client = getRedisClient()

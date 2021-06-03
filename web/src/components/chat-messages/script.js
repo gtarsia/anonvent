@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { messageGroupsRef, messageEvents } from '/@/store/messages'
-import { selfNicknameRef, partnerNicknameRef } from '/@/store/store'
+import { selfNicknameRef, partnerNicknameRef, didPartnerLeaveRef } from '/@/store/store'
 
 function setup() {
   const messagesElRef = ref()
@@ -10,7 +10,7 @@ function setup() {
       el.scrollTop = el.scrollHeight
     })
   })
-  return { messagesElRef, messageGroupsRef, selfNicknameRef, partnerNicknameRef }
+  return { messagesElRef, messageGroupsRef, selfNicknameRef, partnerNicknameRef, didPartnerLeaveRef }
 }
 
 export default { setup }

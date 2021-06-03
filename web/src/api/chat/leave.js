@@ -1,4 +1,6 @@
+import api from '/@/lib/api'
 
 export default function leave() {
-  return Promise.resolve(true)
+  const method = 'POST'
+  return api('chat/leave', { method })
 }

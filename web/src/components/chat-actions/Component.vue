@@ -8,6 +8,7 @@
             v-if="isMatchedRef"
             @click="leave">Leave</button>
     <button class="chat-action-button inline-flex items-center pl-4"
+            id="join-queue-button"
             :class="isFindingRef ? 'bg-yellow-500' : 'bg-blue-500'"
             v-if="!isMatchedRef"
             @click="queue">

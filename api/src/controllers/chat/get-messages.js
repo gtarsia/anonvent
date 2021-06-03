@@ -1,5 +1,5 @@
 import { stubIfTest } from 'dummee'
-import { getUserMessages } from '../../users/convo'
+import { getUserMessages } from '_/redis/users/convo'
 
 async function getMessages({ ctx }) {
   const { userId } = ctx

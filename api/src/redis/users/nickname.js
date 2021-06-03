@@ -1,7 +1,7 @@
 import { upperFirst, camelCase } from 'lodash'
 import randomWords from 'random-words'
-import { get, set } from '../redis-promise'
-import getRedisClient from '../get-redis-client'
+import { get, set } from '_/redis-promise'
+import getRedisClient from '_/get-redis-client'
 
 const wordsPerString = 2
 const exactly = 1

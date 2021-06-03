@@ -1,18 +1,7 @@
-import getRedisClient from '../get-redis-client'
-import { get, lrange, rpush } from '../redis-promise'
+import getRedisClient from '_/get-redis-client'
+import { get, lrange, rpush } from '_/redis-promise'
 // import { getWebsocketServer } from '../websocket-server'
-
-export function userConvoKey(userId) {
-  return `users:${userId}:convo`
-}
-
-export function convoUsersKey(convoId) {
-  return `convos:${convoId}:users`
-}
-
-function convoMessagesKey(convoId) {
-  return `convos:${convoId}:messages`
-}
+import { userConvoKey, convoMessagesKey, convoUsersKey } from './keys'
 
 export function getUserConvoId({ userId }) {
   const client = getRedisClient()

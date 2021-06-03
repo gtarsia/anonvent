@@ -17,7 +17,8 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'object-curly-newline': ['error', {
       ObjectPattern: { minProperties: 5 },
-    }]
+    }],
+    "import/no-extraneous-dependencies": ["error", { "optionalDependencies": true }]
   },
   parserOptions: {
     parser: 'babel-eslint',

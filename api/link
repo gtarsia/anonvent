@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rm -rf node_modules/_
+ln -sf $(dirname `which $0`)/src node_modules/_

@@ -1,8 +1,9 @@
 import getStatus from './controllers/self/get-status'
-import setRole from './controllers/self/set-role'
+import getQueue from './controllers/queue/get-queue'
 import getMessages from './controllers/chat/get-messages'
 import sendMessage from './controllers/chat/send-message'
-import getQueue from './controllers/queue/get-queue'
+import leaveConvo from './controllers/chat/leave-convo'
+import setRole from './controllers/self/set-role'
 
 export function router() {
   return async (ctx, next) => {
@@ -20,6 +21,9 @@ export function router() {
       }
       if (ctx.path === '/api/chat/messages' && ctx.method === 'POST') {
         await sendMessage({ ctx })
+      }
+      if (ctx.path === '/api/chat/leave' && ctx.method === 'POST') {
+        await leaveConvo({ ctx })
       }
       if (ctx.path === '/api/self/role' && ctx.method === 'PUT') {
         await setRole({ ctx })

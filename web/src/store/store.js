@@ -8,6 +8,7 @@ import connectWs from '/@/websocket/connect-ws'
 
 export const selfNicknameRef = ref('')
 export const partnerNicknameRef = ref('')
+export const didPartnerLeaveRef = ref(false)
 export const isMatchedRef = ref(false)
 export const isFindingRef = ref(false)
 
@@ -17,13 +18,14 @@ export async function queue() {
 }
 
 export async function hydrate() {
-  const { isMatched, partnerNickname, role, nickname } = await getStatus()
+  const { isMatched, partnerNickname, role, nickname, didPartnerLeave } = await getStatus()
   connectWs()
   selfNicknameRef.value = nickname
   setRole(role)
   if (isMatched) {
     hydrateMessages()
     partnerNicknameRef.value = partnerNickname
+    didPartnerLeaveRef.value = didPartnerLeave
     roleRef.value = role
   }
   isMatchedRef.value = isMatched

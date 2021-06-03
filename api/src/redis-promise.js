@@ -22,6 +22,9 @@ export function get(client, ...args) {
 export function set(client, ...args) {
   return promisify(cb => client.set(...args, cb))
 }
+export function del(client, ...args) {
+  return promisify(cb => client.del(...args, cb))
+}
 export function lpush(client, ...args) {
   return promisify(cb => client.lpush(...args, cb))
 }

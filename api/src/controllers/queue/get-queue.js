@@ -1,6 +1,6 @@
 import { stubIfTest } from 'dummee'
-import { getUserRole } from '../../users/role'
-import { findMatch } from '../../queue'
+import { getUserRole } from '_/redis/users/role'
+import { findMatch } from '_/redis/queue'
 
 async function getQueue({ ctx }) {
   const { userId } = ctx

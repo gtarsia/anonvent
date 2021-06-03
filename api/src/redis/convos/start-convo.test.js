@@ -1,6 +1,6 @@
 import test from 'ava'
 import dummee from 'dummee'
-import getRedisClient from '../get-redis-client'
+import getRedisClient from '_/get-redis-client'
 import startConvo from './start-convo'
 
 test('startConvo should work correctly', (t) => {
