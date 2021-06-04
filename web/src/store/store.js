@@ -12,6 +12,7 @@ export const partnerNicknameRef = ref('')
 export const didPartnerLeaveRef = ref(false)
 export const isMatchedRef = ref(false)
 export const isFindingRef = ref(false)
+export const queueStatusRef = ref('')
 
 export async function joinQueue() {
   isFindingRef.value = true
@@ -31,7 +32,7 @@ export function leaveQueue() {
 }
 
 export async function hydrate() {
-  const { isMatched, partnerNickname, role, nickname, didPartnerLeave, isFinding } = await getStatus()
+  const { isMatched, partnerNickname, role, nickname, didPartnerLeave, isFinding, queueStatus } = await getStatus()
   connectWs()
   selfNicknameRef.value = nickname
   setRole(role)
@@ -43,6 +44,7 @@ export async function hydrate() {
   }
   isFindingRef.value = isFinding
   isMatchedRef.value = isMatched
+  queueStatusRef.value = queueStatus
 }
 
 export async function leave() {

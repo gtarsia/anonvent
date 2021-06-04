@@ -1,6 +1,6 @@
 import { stubIfTest } from 'dummee'
 import { receiveMessage } from '/@/store/messages'
-import { receiveStartConvo, receiveLeaveConvo } from '/@/store/store'
+import { receiveStartConvo, receiveLeaveConvo, queueStatusRef } from '/@/store/store'
 
 function connectWs() {
   let { location: { hostname, port, protocol } } = window
@@ -17,6 +17,9 @@ function connectWs() {
     }
     if (wsMessage.type === 'leave-convo') {
       receiveLeaveConvo(wsMessage)
+    }
+    if (wsMessage.type === 'queue-change') {
+      queueStatusRef.value = wsMessage.queueStatus
     }
   }
   socket.onopen = function (event) {

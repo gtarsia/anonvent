@@ -3,6 +3,7 @@ import { getUserRole } from '_/redis/users/role'
 import { getUserConvoId, getConvoUsers } from '_/redis/convos/convo'
 import { getUserNickname } from '_/redis/users/nickname'
 import isUserFinding from '_/redis/queue/is-user-finding'
+import getQueueStatusText from '_/models/queue/get-queue-status-text'
 
 async function getStatus({ ctx }) {
   const { userId } = ctx
@@ -11,8 +12,9 @@ async function getStatus({ ctx }) {
     getUserConvoId({ userId }),
     getUserRole({ userId }),
     isUserFinding({ userId }),
+    getQueueStatusText(),
   ])
-  const [nickname, convoId, role, isFinding] = results
+  const [nickname, convoId, role, isFinding, queueStatus] = results
   const isMatched = Boolean(convoId)
   let partnerNickname = null
   let didPartnerLeave = null
@@ -22,7 +24,7 @@ async function getStatus({ ctx }) {
     partnerNickname = await getUserNickname({ userId: partnerId })
     didPartnerLeave = await getUserConvoId({ userId: partnerId }) !== convoId
   }
-  ctx.body = { isMatched, convoId, nickname, role, partnerNickname, didPartnerLeave, isFinding }
+  ctx.body = { isMatched, convoId, nickname, role, partnerNickname, didPartnerLeave, isFinding, queueStatus }
 }
 
 export default stubIfTest(getStatus)

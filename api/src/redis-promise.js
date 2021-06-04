@@ -40,6 +40,9 @@ export function zadd(client, ...args) {
 export function zcard(client, ...args) {
   return promisify(cb => client.zcard(...args, cb))
 }
+export function zcount(client, ...args) {
+  return promisify(cb => client.zcount(...args, cb))
+}
 export function zpopmin(client, ...args) {
   return promisify(cb => client.zpopmin(...args, cb))
 }

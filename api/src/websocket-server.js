@@ -1,5 +1,6 @@
 import WebSocket from 'ws'
 import cookie from 'cookie'
+import getQueueStatusText from '_/models/queue/get-queue-status-text'
 
 let wsServer = null
 /* eslint-disable-next-line no-unused-vars */
@@ -53,5 +54,17 @@ export function notifySocketsLeaveConvo({ userId }) {
     const type = 'leave-convo'
     const msg = JSON.stringify({ type })
     ws.send(msg)
+  })
+}
+
+export async function notifySocketsQueueChange() {
+  const queueStatus = await getQueueStatusText()
+  const keys = Object.keys(socketsByUserId)
+  keys.forEach((key) => {
+    socketsByUserId[key].forEach((ws) => {
+      const type = 'queue-change'
+      const msg = JSON.stringify({ type, queueStatus })
+      ws.send(msg)
+    })
   })
 }

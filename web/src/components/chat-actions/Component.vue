@@ -22,6 +22,9 @@
       </svg>
       Find
     </button>
+    <span>
+      {{ queueStatusRef }}
+    </span>
   </div>
 </template>
 <script src="./script"></script>
