@@ -1,8 +1,9 @@
 import { ref } from 'vue'
+import { selfNicknameRef } from '/@/store/store'
 
 function setup() {
   const showMobileMenuRef = ref(false)
-  return { showMobileMenuRef }
+  return { showMobileMenuRef, selfNicknameRef }
 }
 
 export default { setup }
