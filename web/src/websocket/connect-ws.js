@@ -3,9 +3,10 @@ import { receiveMessage } from '/@/store/messages'
 import { receiveStartConvo, receiveLeaveConvo } from '/@/store/store'
 
 function connectWs() {
-  let { location: { hostname, port } } = window
+  let { location: { hostname, port, protocol } } = window
+  protocol = protocol === 'https:' ? 'wss' : 'ws'
   port = port ? `:${port}` : port
-  const socket = new WebSocket(`ws://${hostname}${port}/api`)
+  const socket = new WebSocket(`${protocol}://${hostname}${port}/api`)
   socket.onmessage = function(event) {
     const wsMessage = JSON.parse(event.data)
     if (wsMessage.type === 'message') {
